@@ -1,6 +1,8 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-
 import storage from 'redux-persist/lib/storage'
+
+import todosReducer from "./slices/todosSlice.ts";
+import selectedTodoReducer from "./slices/selectedTodosSlice.ts";
 
 import {
     persistStore,
@@ -11,11 +13,12 @@ import {
     PERSIST,
     PURGE,
     REGISTER} from 'redux-persist'
-import todosReducer from "./slices/todosSlice.ts";
+
 
 const reducers = combineReducers(
     {
-        todos:todosReducer
+        todos:todosReducer,
+        selectedTodos:selectedTodoReducer
     })
 
 const persistConfig = {
