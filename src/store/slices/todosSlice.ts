@@ -12,10 +12,9 @@ export const todosSlice = createSlice({
         addUnderTask:(state,{payload})=>{
             const task=payload.task
             const underTask=payload.underTask
-            console.log(task)
-            const id=state.indexOf(task)
-            console.log(id)
-            state[id].underTasks.push(underTask)
+            const linkToObject=findObjectInsideTree(state,task)
+
+            linkToObject.underTasks.push(underTask)
         },
         deleteTodo:(state,{payload})=>{
             const id=state.indexOf(payload)
