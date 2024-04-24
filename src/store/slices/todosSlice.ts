@@ -1,4 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {findObjectInsideTree} from "../../utils/tree/findObjectInsideTree.ts";
+import {deleteObjectFromTree} from "../../utils/tree/deleteObjectFromTree.ts";
+
 
 const initialState:Array<ITodo> = []
 
@@ -16,17 +19,23 @@ export const todosSlice = createSlice({
 
             linkToObject.underTasks.push(underTask)
         },
-        deleteTodo:(state,{payload})=>{
-            const id=state.indexOf(payload)
-            state.splice(id,1)
         deleteTodo:(state,{payload}:PayloadAction<ITodo>)=>{
             deleteObjectFromTree(state,payload)
         },
+        changeTodo:(state,{payload})=>{
+            const todo=payload.todo
+            const newData=payload.newData
+            const linkToObject=findObjectInsideTree(state,todo)
+
+            if (linkToObject){
+                linkToObject.title=newData.title
+                linkToObject.description=newData.description
+            }
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const {addTodo,addUnderTask,deleteTodo} = todosSlice.actions
+export const {addTodo,addUnderTask,deleteTodo,changeTodo} = todosSlice.actions
 
 export default todosSlice.reducer
