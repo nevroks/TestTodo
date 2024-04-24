@@ -1,14 +1,20 @@
 import classes from "./style.module.css";
-import {Chip} from "@mui/material";
+import {Button, Chip, Input, Stack} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
-import NoteIcon from '@mui/icons-material/Note';
-import {useAppDispatch} from "../../hooks/ReduxHooks.ts";
 import {useAppDispatch, useAppSelector} from "../../hooks/ReduxHooks.ts";
 import {changeTodo, deleteTodo} from "../../store/slices/todosSlice.ts";
+import {refreshSelectedTodo} from "../../store/slices/selectedTodosSlice.ts";
+import {useState} from "react";
+import PopUp from "../popup/PopUp.tsx";
 const ToolBar = () => {
+    const [isTodoChanging,setIsTodoChanging]=useState(false)
+    const [newTodo,setNewTodo]=useState({
+        title:'',
+        description:''
+    })
     const dispatch=useAppDispatch()
-
+    const todos=useAppSelector(state => state.selectedTodos)
     const handleDelete=()=>{
         for (let todo of todos){
             dispatch(deleteTodo(todo))
@@ -29,11 +35,37 @@ const ToolBar = () => {
 
     }
 
+    const handleApply=()=>{
+        dispatch(changeTodo({todo:todos[0],newData:newTodo}))
+        dispatch(refreshSelectedTodo())
+        setNewTodo({
+            title:'',
+            description:''
+        })
+        setIsTodoChanging(false)
+    }
     return (
         <div className={classes.toolbar}>
+            {isTodoChanging && <PopUp setterFunc={setIsTodoChanging}>
+                <div>
+                    <p>Изменить</p>
+                    <Stack spacing={2} direction="row">
+                        <Input
+                            value={newTodo.title}
+                            onChange={(e)=>setNewTodo({...newTodo,title:e.target.value})}
+                            aria-label="Demo input"
+                            placeholder="Заголовок" />
+                        <Input
+                            value={newTodo.description}
+                            onChange={(e)=>setNewTodo({...newTodo,description:e.target.value})}
+                            aria-label="Demo input"
+                            placeholder="Описание" />
+                    </Stack>
+                    <Button onClick={handleApply}>Применить</Button>
+                </div>
+            </PopUp>}
             <Chip onClick={handleDelete} icon={<DeleteIcon/>} color="error" />
-            <Chip icon={<CreateIcon/>} color="warning" />
-            <Chip icon={<NoteIcon/>} color="success" />
+            <Chip onClick={handleChange} icon={<CreateIcon/>} color="warning" />
         </div>
     );
 };
