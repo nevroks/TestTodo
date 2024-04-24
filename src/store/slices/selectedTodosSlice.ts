@@ -13,11 +13,14 @@ export const selectedTodosSlice = createSlice({
             const id=state.indexOf(payload)
 
             state.splice(id,1)
+        },
+        refreshSelectedTodo:(state)=>{
+            state.splice(0,state.length)
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const {addSelectedTodo,deleteSelectedTodo} = selectedTodosSlice.actions
+export const {addSelectedTodo,deleteSelectedTodo,refreshSelectedTodo} = selectedTodosSlice.actions
 
 export default selectedTodosSlice.reducer
