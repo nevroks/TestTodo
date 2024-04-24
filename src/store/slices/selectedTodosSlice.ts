@@ -10,8 +10,7 @@ export const selectedTodosSlice = createSlice({
             state.push(payload)
         },
         deleteSelectedTodo:(state,{payload}:PayloadAction<ITodo>)=>{
-            const id=state.indexOf(payload)
-
+            const id=state.findIndex((el => el.title === payload.title))
             state.splice(id,1)
         },
         refreshSelectedTodo:(state)=>{
