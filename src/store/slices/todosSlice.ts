@@ -19,6 +19,9 @@ export const todosSlice = createSlice({
         deleteTodo:(state,{payload})=>{
             const id=state.indexOf(payload)
             state.splice(id,1)
+        deleteTodo:(state,{payload}:PayloadAction<ITodo>)=>{
+            deleteObjectFromTree(state,payload)
+        },
         }
     }
 })
