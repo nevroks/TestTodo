@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
 import TodoItem from "./TodoItem.tsx";
-import {List, ListItemButton, ListItemIcon, ListItemText, ListSubheader} from "@mui/material";
+import {List, ListSubheader} from "@mui/material";
+import {FC} from "react";
 
 type TodoListProps={
     todos: Array<ITodo>
@@ -9,7 +9,7 @@ type TodoListProps={
 const TodoList:FC<TodoListProps> = ({todos}) => {
     return (
             <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                sx={{ width: '100%', bgcolor: 'background.paper' }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
                 subheader={
@@ -19,7 +19,7 @@ const TodoList:FC<TodoListProps> = ({todos}) => {
                 }
             >
                 {todos.map(todo=>
-                    <TodoItem todo={todo}/>
+                    <TodoItem key={Math.random()} todo={todo}/>
                 )}
             </List>
     );
