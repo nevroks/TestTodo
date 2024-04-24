@@ -1,11 +1,21 @@
 import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
-import {Button, Checkbox, Collapse, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {
+    Button,
+    Checkbox,
+    Collapse,
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    ListSubheader
+} from "@mui/material";
 import {ExpandLess, ExpandMore, StarBorder} from "@mui/icons-material";
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import PopUp from "../popup/PopUp.tsx";
 import CreateUnderTaskForm from "../createundertaskform/CreateUnderTaskForm.tsx";
 import {useAppDispatch, useAppSelector} from "../../hooks/ReduxHooks.ts";
 import {addSelectedTodo, deleteSelectedTodo} from "../../store/slices/selectedTodosSlice.ts";
+import TodoList from "./TodoList.tsx";
 
 type TodoItemProps={
     todo:ITodo
@@ -46,11 +56,8 @@ const TodoItem: FC<TodoItemProps> = ({todo}) => {
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <Button onClick={handleCreate}>Создать подзадачу</Button>
-                {/*<List component="div" disablePadding>*/}
-                {/*    <ListItemButton sx={{ pl: 4 }}>*/}
-                {/*        <ListItemText primary="Starred" />*/}
-                {/*    </ListItemButton>*/}
-                {/*</List>*/}
+                {todo.underTasks.length>0 &&
+                    <TodoList todos={todo.underTasks}/>}
             </Collapse>
         </div>
     );
