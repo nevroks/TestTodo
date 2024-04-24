@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Button, Input, Stack} from "@mui/material";
 import classes from "./style.module.css";
-import {useAppDispatch} from "../../hooks/ReduxHooks.ts";
+import {useAppDispatch, useAppSelector} from "../../hooks/ReduxHooks.ts";
 import {addTodo} from "../../store/slices/todosSlice.ts";
 
 const CreateTodoForm = () => {
     const dispatch=useAppDispatch()
+    const todosArr=useAppSelector(state => state.todos)
     const [newTodo,setNewTodo]=useState({
         title:'',
         description:'',
@@ -15,6 +16,11 @@ const CreateTodoForm = () => {
         e.preventDefault()
     }
     const handleClick=()=>{
+        const isTodoTitleUsed=todosArr.some(el=>el.title===newTodo.title)
+        if (isTodoTitleUsed){
+            alert("Такая задача уже существует")
+            return
+        }
         dispatch(addTodo(newTodo))
     }
     return (
