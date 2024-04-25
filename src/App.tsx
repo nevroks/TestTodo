@@ -1,7 +1,8 @@
 import {Route, Routes} from "react-router-dom";
-import HomePage from "./pages/homepage/HomePage.tsx";
-import Layout from "./components/layout/Layout.tsx";
+import {lazy} from "react";
 
+import Layout from "./components/layout/Layout.tsx";
+const HomePage = lazy(()=>import("./pages/homepage/HomePage.tsx"))
 
 function App() {
 
