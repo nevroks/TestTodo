@@ -10,6 +10,11 @@ export const todosSlice = createSlice({
     initialState,
     reducers: {
         addTodo:(state,{payload}:PayloadAction<ITodo>)=>{
+            const isTodoWithSameTitleExist=Boolean(findObjectInsideTree(state,payload))
+            if(isTodoWithSameTitleExist){
+                alert("Уже сущестует подзадача с такми заголвоком")
+                return
+            }
             state.push(payload)
         },
         addUnderTask:(state,{payload})=>{
@@ -17,6 +22,11 @@ export const todosSlice = createSlice({
             const underTask=payload.underTask
             const linkToObject=findObjectInsideTree(state,task)
 
+            const isTodoWithSameTitleExist=Boolean(findObjectInsideTree(state,underTask))
+            if(isTodoWithSameTitleExist){
+                alert("Подзадача или задача с такми заголвоком уже существует")
+                return
+            }
             linkToObject.underTasks.push(underTask)
         },
         deleteTodo:(state,{payload}:PayloadAction<ITodo>)=>{
