@@ -4,14 +4,18 @@ import classes from "./style.module.css";
 import {useAppDispatch} from "../../hooks/ReduxHooks.ts";
 import { addUnderTask} from "../../store/slices/todosSlice.ts";
 
-const CreateUnderTaskForm = ({todo}) => {
+type CreateUnderTaskFormPropsType={
+    todo:ITodo
+}
+
+const CreateUnderTaskForm:FC<CreateUnderTaskFormPropsType> = ({todo}) => {
     const dispatch=useAppDispatch()
     const [newTodo,setNewTodo]=useState({
         title:'',
         description:'',
         underTasks:[]
     })
-    const handleSubmit=(e)=>{
+    const handleSubmit=(e:FormEvent)=>{
         e.preventDefault()
     }
     const handleClick=()=>{

@@ -12,7 +12,7 @@ const CreateTodoForm = () => {
         description:'',
         underTasks:[]
     })
-    const handleSubmit=(e)=>{
+    const handleSubmit=(e:FormEvent)=>{
         e.preventDefault()
     }
     const handleClick=()=>{
