@@ -1,5 +1,5 @@
 import TodoItem from "./TodoItem.tsx";
-import {List, ListSubheader} from "@mui/material";
+import {Chip, Divider, List, ListSubheader} from "@mui/material";
 import {FC} from "react";
 
 type TodoListProps={
@@ -21,6 +21,7 @@ const TodoList:FC<TodoListProps> = ({todos}) => {
                 {todos.map(todo=>
                     <TodoItem key={Math.random()} todo={todo}/>
                 )}
+                <Divider variant="middle" component="div"><Chip label="List End" size="medium" /></Divider>
             </List>
     );
 };
