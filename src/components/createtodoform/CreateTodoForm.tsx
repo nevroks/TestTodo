@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {FormEvent, useState} from 'react';
 import {Button, Input, Stack} from "@mui/material";
 import classes from "./style.module.css";
 import {useAppDispatch, useAppSelector} from "../../hooks/ReduxHooks.ts";

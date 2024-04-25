@@ -1,9 +1,9 @@
 import classes from "./style.module.css";
 import {useAppSelector} from "../../hooks/ReduxHooks.ts";
-import React, {useState} from "react";
+import {useState} from "react";
 import TodoList from "../../components/todo/TodoList.tsx";
 import PopUp from "../../components/popup/PopUp.tsx";
-import {Button, Input} from "@mui/material";
+import {Button} from "@mui/material";
 import CreateTodoForm from "../../components/createtodoform/CreateTodoForm.tsx";
 import ToolBar from "../../components/toolbar/ToolBar.tsx";
 

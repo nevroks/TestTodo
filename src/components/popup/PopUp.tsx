@@ -1,4 +1,4 @@
-import React, {Dispatch, FC, ReactNode, SetStateAction} from 'react';
+import {Dispatch, FC, ReactNode, SetStateAction} from 'react';
 import classes from "./style.module.css";
 
 type PopUpProps={

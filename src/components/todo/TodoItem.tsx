@@ -1,16 +1,12 @@
-import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
+import {FC, useMemo, useState} from 'react';
 import {
     Button,
     Checkbox,
     Collapse,
-    List,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
-    ListSubheader
 } from "@mui/material";
-import {ExpandLess, ExpandMore, StarBorder} from "@mui/icons-material";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import PopUp from "../popup/PopUp.tsx";
 import CreateUnderTaskForm from "../createundertaskform/CreateUnderTaskForm.tsx";
 import {useAppDispatch, useAppSelector} from "../../hooks/ReduxHooks.ts";
