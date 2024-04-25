@@ -1,4 +1,4 @@
-export function deleteObjectFromTree(array,object){
+export function deleteObjectFromTree(array:Array<ITodo>,object:ITodo){
     let found = false;
 
     for (let i = 0; i < array.length; i++) {

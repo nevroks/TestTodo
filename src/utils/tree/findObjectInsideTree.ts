@@ -2,7 +2,7 @@ export function findObjectInsideTree(array:Array<ITodo>,object:ITodo):ITodo{
 
     let foundElement = null;
 
-    const searchElement = (node) => {
+    const searchElement = (node:ITodo) => {
         if (node.title === object.title) {
             foundElement = node;
             return;
@@ -19,5 +19,6 @@ export function findObjectInsideTree(array:Array<ITodo>,object:ITodo):ITodo{
         searchElement(todo);
     });
 
+    // @ts-ignore
     return foundElement;
 }
