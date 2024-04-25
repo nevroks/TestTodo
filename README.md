@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# Задание
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To do’шник
+Необходимо разработать лист задач по следующим требованиям:
+1. Создавать/редактировать/удалять задачи
+2. У задачи есть заголовок и описание
+3. Просмотр задачи
+4. Задачи могут иметь бесконечную вложенность
+5. При первом открытии приложения должны быть создана хотя бы 1 задача
+Будет плюсом:
+1. Выбор нескольких задач на удаление
+2. При выборе задачи верхнего уровня, выбираются все дочерние задачи
+3. У задачи может быть дата и время, когда необходимо выполнить задачу
+4. У задачи может быть дата и время напоминания о необходимости выполнить задачу 
+5. Запоминать состояние списка задач после выхода 
+6. Приветствуются свои идеи
+При разработке использовать:
+1. React
+2. Typescript
+3. Redux
+4. Antd (можно любой другой ui kit)
+После завершения разработки:
+1. В readme перечислить используемые библиотеки, фреймворки и т.д, и описать алгоритм 
+запуска приложения локально
+2. Выложить на GitHub pages или любой другой хостинг
+3. В readme указать ссылку на приложение
 
-Currently, two official plugins are available:
+## Библеотеки
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Библеотеки:React,TypeScript,Redux toolkit,React Redux,Redux persist,React Router Dom,Material Ui
 
-## Expanding the ESLint configuration
+## Алгоритм запуска локально
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
