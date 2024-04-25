@@ -3,7 +3,11 @@ import {findObjectInsideTree} from "../../utils/tree/findObjectInsideTree.ts";
 import {deleteObjectFromTree} from "../../utils/tree/deleteObjectFromTree.ts";
 
 
-const initialState:Array<ITodo> = []
+const initialState:Array<ITodo> = [
+    {title:'Нанять джуна',
+    description:'Нужно срочно',
+    underTasks:[]}
+]
 
 export const todosSlice = createSlice({
     name: 'todos',
